@@ -38,10 +38,15 @@ export default function api (app) {
     //   )
     // })
     let uri = `${url.resolve(scrapbookEndpoint, path.join(config.env, 'greetings', 'hello'))}`
-    return rp.get({
-      uri: `${url.resolve(scrapbookEndpoint, path.join(config.env, 'greetings', 'hello'))}`,
-      json: true
-    }).then((val) => Promise.resolve(val))
+    return Promise.all([
+      rp.get({
+        uri,
+        json: true
+      }), rp.get({
+        uri,
+        json: true
+      })
+    ]).then((values) => Promise.resolve(values))
       .catch(e => Promise.reject(e))
   }))
 
