@@ -1,4 +1,8 @@
 port: 7878
+env: 'dev'
+services:
+  scrapbook:
+    endpoint: 'https://oig6ocrkac.execute-api.eu-west-1.amazonaws.com/'
 log:
   console:
     level: info
